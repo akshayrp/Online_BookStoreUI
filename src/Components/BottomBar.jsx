@@ -15,13 +15,14 @@ const useStyles = makeStyles(theme => ({
 
     },
 
+
 }));
 
 export default function DenseAppBar() {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
+        <div className="BootomBar">
+            <AppBar position="relative">
                 <Toolbar variant="dense" className={classes.bottomBar}>
                     <Typography color="inherit" className={classes.copyRight}>
                         Copyright 2020, TallTales BookStore Private Limited. All Rights Reserved.
@@ -29,5 +30,5 @@ export default function DenseAppBar() {
                 </Toolbar>
             </AppBar>
         </div>
-    );
+       );
 }
