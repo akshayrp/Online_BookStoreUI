@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import '../CSS/CustomerDetails.css'
 import TextField from '@material-ui/core/TextField';
@@ -133,6 +134,7 @@ class CustomerDetails extends Component {
 
         </div>);
     }
+
 }
 
 export default CustomerDetails;
