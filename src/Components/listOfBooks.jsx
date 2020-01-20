@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import {Container} from "@material-ui/core";
 import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
-import IconButton from '@material-ui/core/IconButton';
 
 
 export default class SimpleCard extends Component {

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PrimarySearchAppBar from "./TopToolBar";
+
+import DenseAppBar from "./BottomBar";
+import CustomerDetails from "./CustomerDetails"
 import SimpleCard from "./listOfBooks";
-import CustomerDetails from "./CustomerDetails";
-import BottomBar from "./BottomBar";
 
 export default class renderTemplates extends  Component{
    render(){
@@ -14,3 +15,4 @@ export default class renderTemplates extends  Component{
         )
     }
 }
+

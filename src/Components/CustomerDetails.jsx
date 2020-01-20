@@ -1,134 +1,140 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+
+import React, { Component } from 'react';
+import '../CSS/CustomerDetails.css'
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import {grey} from '@material-ui/core/colors';
-import  '../CSS/CustomerDetails.css'
-import Button from "@material-ui/core/Button";
-import MenuItem from "@material-ui/core/MenuItem";
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+import axios from "axios";
 
-const useStyles = makeStyles(theme => ({
+import { withStyles } from '@material-ui/core/styles';
+
+const CssTextField = withStyles({
     root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 250,
-            color:'black',
-        },
+        'MuiOutlinedInput-root': {
+            position: 'relative',
+            width: '670px',
+            borderRadius: '4px',
+            height: '69px',
+        }
+
     },
-}));
+})(TextField);
+class CustomerDetails extends Component {
 
-const defaultProps = {
-    bgcolor: 'background.paper',
-    m: 1,
-    border: 1,
-    style: { width: '40rem',color: 'grey', height: '28rem' },
-    color: grey,
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            address: '',
+            country: '',
+            pincode: ''
+        }
+    }
 
-};
+    changeHandler = (e) => {
+        console.log(e.target);
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
-const orderProps={
-    bgcolor: 'background.paper',
-    m: 1,
-    border: 1,
-    style: { width: '4rem',color: 'grey', height: '3rem' },
+    handleValueChange = (event) => {
+        console.log(event.target);
+        const { name, value } = event.target
+        console.log(this.setState({
+            [name]: value
+        }))
+    }
 
-}
+    submitHandler = (e) => {
+        e.preventDefault()
+        console.log(this.state)
+        axios.post('http://localhost:8080/TallTalesBooks/AddUserDetails', this.state)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
-const useStylesButton = makeStyles(theme => ({
-    root: {
-        '& *': {
-            margin: theme.spacing(1),
-        },
-    },
-}));
-const Country = [
-    {
-        value: 'India',
-        label: 'INDIA',
-    },
-    {
-        value: 'Other',
-        label: 'OTHER',
-    },
-];
 
-export default function FormPropsTextFields() {
-    const classes = useStyles();
-    const classes2 = useStylesButton();
-    const classes1 = useStyles();
-    const [country, setCurrency] = React.useState('EUR');
+    render() {
+        const { address, country, email, name, pinCode } = this.state;
+        return (<div>
+            <div className="subMain" style={{ height: '600px' }}>
 
-    const handleChange = event => {
-        setCurrency(event.target.value);
+                <h2>Customer Details</h2>
+                <div className='content'>
+                    <div className='name' >
+                        <TextField id="outlined-basic" label="Name" name="name" value={name} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                    <div className='phonenumber'>
+                        <TextField id="outlined-basic" label="Phone Number" variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                </div>
 
-    };
+                <div className='content'>
+                    <div className='name'>
+                        <TextField id="outlined-basic" label="Email" name="email" value={email} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                    <div className='phonenumber'>
+                        <TextField id="outlined-basic" label="pinCode" name="pinCode" value={pinCode} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                </div>
 
-    return (
-        <div className="detailsBox">
-            <Box display="flex" justifyContent="center" borderColor="grey"{...defaultProps} >
-                <form className={classes.root} noValidate autoComplete="off">
-                    <p style={{color: 'black'}}
-                    >Customer Details</p>
-                    <div>
-                        <TextField
-                            required id="userName"
-                            label="Name"
-                            type="TextField"
-                            variant="outlined"/>
-                        <TextField
-                            id="userEmail"
-                            label="Email-Id"
-                            type="EmailId"
-                            variant="outlined"
-                        />
-                        <div>
-                            <TextField style={{color: 'black'}}
-                                       id="userAddress"
-                                       label="Address"
-                                       type="TextField"
-                                       variant="outlined"
-                                       width='20%'
+                <div className='address'>
+                    <TextField id="outlined-basic" label="Address" name="address" value={address} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
+                </div>
+                <div className='content'>
+                    <div className='name'>
+                        <TextField id="outlined-basic" label="City/Town" variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                    <div className='phonenumber'>
+                        <TextField id="outlined-basic" label="Country" name="country"  value={country} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
+                    </div>
+                </div>
+                <div className='text'>Type</div>
+                <div className='radioButtons'>
+                    <FormControl component="fieldset" style={{ paddingLeft: '6%' }}>
+                        <RadioGroup aria-label="position" name="position" row>
+                            <div>
+                                <FormControlLabel
+                                    value="top"
+                                    control={<Radio color="primary" />}
+                                    label="Home"
+                                    labelPlacement="end"
+                                />
+                            </div>
+                            <FormControlLabel
+                                value="start"
+                                control={<Radio color="primary" />}
+                                label="Work"
+                                labelPlacement="end"
                             />
-                        </div>
-                        <TextField
-                            id="userPincode"
-                            label="Pincode"
-                            type="number"
-                            variant="outlined"
-                        />
-                        <TextField
-                            id="userCountry"
-                            select
-                            label="Country" color='black'
-                            value={country}
-                            onChange={handleChange}
-                            variant="outlined"
-                            helperText="Please select your Country"
-                        >
-                            {Country.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                        <div>
-                            <p style={{color: 'black'}}>Type</p>
-                            <div className="RadioButton1">
-                                <input type="radio" name="place" value="home"/>Home</div>
-                            <div className="RadioButton2">
-                                <input type="radio" name="place" value="work"/>Work</div>
-                            <div className="RadioButton3">
-                                <input type="radio" name="place" value="other"/>Other</div>
-                        </div>
-                    </div>
+                            <FormControlLabel
+                                value="bottom"
+                                control={<Radio color="primary" />}
+                                label="Other"
+                                labelPlacement="end"
 
-                    <div className="continueButton">
-                        <Button variant="contained" color="primary">
-                            CONTINUE
-                        </Button>
-                    </div>
-                </form>
-            </Box>
-        </div>
-    );
+                            />
+                        </RadioGroup>
+                    </FormControl>
+
+                    <Button variant="contained" color="primary" style={{ float: 'right' }} onClick={this.submitHandler}>
+                        Continue </Button>
+                </div>
+            </div>
+            <div className="orderSummary" style={{ height: '50px' }}>
+                <h2>Order Summary</h2>
+            </div>
+
+        </div>);
+    }
+
 }
+
+export default CustomerDetails;
