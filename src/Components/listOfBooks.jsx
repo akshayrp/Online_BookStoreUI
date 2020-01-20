@@ -53,8 +53,8 @@ export default class SimpleCard extends Component {
                                 <div className={"bookQuantity"}>Available:{item.quantity}
                                 </div>
 
-                                <div className={"quantityButton"}>Qty:
-                                    <input className={"quantityButton.plusMinus"} type="number"  defaultValue={1} min="1" max={item.quantity}/>
+                                <div className={"quantityButton"} >Qty :
+                                    <input className={"quantityButton.plusMinus"} type="number" defaultValue={1} min="1" max={item.quantity} />
                                 </div>
 
 
