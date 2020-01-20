@@ -1,0 +1,59 @@
+.detailsBox{
+    margin-left: 13%;
+    margin-top: 7%;
+}
+.continueButton{
+    margin-left: 80%;
+    margin-top: 4%;
+}
+
+.userAddress.MuiFormControl-root{
+    width: 250px;
+    margin: 8px;
+}
+
+.user {
+    width: 9%;
+}
+.makeStyles-root-1{
+    margin-top: 15px;
+}
+
+.MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl{
+    width: 206%;
+
+}
+.MuiBox-root-130{
+    color: black;
+}
+
+.SummaryBox{
+    margin-right: 20%;
+}
+
+.BootomBar{
+    margin-top: 10%;
+}
+input[type="radio"] {
+    margin-right: 0;
+}
+
+.RadioButton1{
+    color: black;
+}
+
+.RadioButton2{
+    color: black;
+    margin-left: 26%;
+    margin-top: -17.1px;
+}
+
+.RadioButton3{
+    color: black;
+    margin-left: 50%;
+    margin-top: -3.8%;
+}
+
+.NameAndEmail{
+    color: black;
+}

@@ -1,33 +1,21 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React, {Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import '../CSS/BottomBar.css'
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    bottomBar: {
-        backgroundColor: "#2E1D1E",
-    },
-    copyRight: {
-
-    },
-
-}));
-
-export default function DenseAppBar() {
-    const classes = useStyles();
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar variant="dense" className={classes.bottomBar}>
-                    <Typography color="inherit" className={classes.copyRight}>
-                        Copyright 2020, TallTales BookStore Private Limited. All Rights Reserved.
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+export default class DenseAppBar extends Component{
+    render() {
+        return (
+            <div className='root'>
+                <AppBar position="static">
+                    <Toolbar variant="dense" className='bottomBar'>
+                        <Typography color="inherit">
+                            Copyright 2020, TallTales BookStore Private Limited. All Rights Reserved.
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
