@@ -10,9 +10,7 @@ export default class renderTemplates extends  Component{
             <div>
                 <PrimarySearchAppBar/>
                 <SimpleCard/>
-               {/* <CustomerDetails/>
-                <BottomBar/>*/}
-            </div>
+                </div>
         )
     }
 }
