@@ -1,0 +1,65 @@
+
+.subMain{
+    width: 62%;
+    margin-left: 14%;
+    margin-top: 4%;
+    border: 0.5px solid lightgrey;
+    border-radius: 2px;
+    padding: 10px;
+    color:   gray;
+
+}
+
+.name{
+    width: 50%;
+}
+.content{
+    width: 100%;
+    display: flex;
+    padding-top: 3%;
+}
+
+.MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.00938em;
+}
+
+.phonenumber{
+    width: 50%;
+    margin-left: 7%;
+}
+
+.address{
+    padding-left: 0.1%;
+    padding-top: 3%;
+}
+
+.text{
+    font-size: 22px;
+    width: 100%;
+    display: flex;
+    font-family: inherit;
+    padding-top: 3%;
+    padding-left: 5%;
+}
+
+.radioButtons{
+    padding-left: 17%;
+    padding-top: 4%;
+}
+
+.orderSummary{
+    width: 55%;
+    height: 100%;
+    margin-left: 14%;
+    margin-top: 2%;
+    border: 0.5px solid lightgrey;
+    border-radius: 2px;
+    padding: 20px;
+    color:   gray;
+}
