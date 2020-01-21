@@ -66,7 +66,7 @@ class CustomerDetails extends Component {
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
 
-                <h2>Customer Details</h2>
+                <h1>CUSTOMER DETAILS</h1>
                 <div className='content'>
                     <div className='name' >
                         <TextField id="outlined-basic" label="Name" name="name" value={name} onChange={this.changeHandler} variant="outlined" style={{ width: '100%' }} />
