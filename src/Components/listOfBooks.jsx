@@ -3,10 +3,10 @@ import Card from '@material-ui/core/Card';
 import {Container} from "@material-ui/core";
 import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 
 
 export default class SimpleCard extends Component {
+    fieldName = "";
 
     constructor(props, context) {
         super(props, context);
@@ -15,7 +15,7 @@ export default class SimpleCard extends Component {
 
 
     async componentDidMount() {
-        const url = "http://localhost:8080/TallTalesBooks/list";
+        const url = "http://192.168.0.114:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false});
@@ -49,16 +49,16 @@ export default class SimpleCard extends Component {
                             <div className={"bookName"}>{item.bookName}</div>
                             <div className={"authorName"}>{item.authorName}</div>
                             <div className={"bookPrice"}>Rs.{item.price}</div>
-                            <div className={"bookQuantity"}>Quantities:{item.quantity}</div>
-                            {/* <NumericInput
-                                className="form-control"
-                                value={ 50 }
-                                min={ 0 }
-                                max={ 100 }
-                                step={ 1 }
-                                precision={ 0 }
-                                size={ 5 }
-                            /> */}
+                            <div className={""}>
+                                <div className={"bookQuantity"}>Available:{item.quantity}
+                                </div>
+
+                                <div className={"quantityButton"} >Qty :
+                                    <input className={"quantityButton.plusMinus"} type="number" defaultValue={1} min="1" max={item.quantity} />
+                                </div>
+
+
+                            </div>
                             <div>
                                 <Button style={{
                                     backgroundColor: "#A03037",

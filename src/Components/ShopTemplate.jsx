@@ -5,14 +5,14 @@ import DenseAppBar from "./BottomBar";
 import CustomerDetails from "./CustomerDetails"
 import SimpleCard from "./listOfBooks";
 
-export default function renderTemplates() {
-    return (
-        <div>
-            <PrimarySearchAppBar/>
-            <CustomerDetails/>
-            <DenseAppBar/>
-            {/*<SimpleCard/>*/}
-        </div>
-    )
+export default class renderTemplates extends  Component{
+   render(){
+        return (
+            <div>
+                <PrimarySearchAppBar/>
+                <SimpleCard/>
+                </div>
+        )
+    }
 }
 
