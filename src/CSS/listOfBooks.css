@@ -32,9 +32,11 @@
     font-weight: bold;
 }
 .bookQuantity{
-    font-size: small;
+    margin-top: 1%;
+    font-size: medium;
     color: darkslategrey;
     padding-left: 5%;
+    float: left;
 }
 .imageBackGround{
     background-color: #F5F5F5;}

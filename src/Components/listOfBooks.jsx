@@ -8,13 +8,14 @@ import "../App";
 
 class SimpleCard extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {loading: true, listOfBooks: []};
     }
 
 
     async componentDidMount() {
+
         const url = "http://192.168.0.106:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
@@ -48,7 +49,7 @@ class SimpleCard extends Component {
                               width: '16vw',
                               display: "block",
                               verticalAlign: 'middle',
-                              marginTop: "3%"
+                              marginTop: "15%"
                           }} className={"card"}>
 
                         <div className={"imageBackGround"}>
@@ -80,7 +81,6 @@ class SimpleCard extends Component {
         });
 
         return (
-
             <Container className={'listContainer'} style={{marginBottom: "3%"}}>
                 {Books}
             </Container>

@@ -1,21 +1,23 @@
 
+
 .subMain{
-    width: 55%;
-    height: 100%;
+    width: 62%;
     margin-left: 14%;
     margin-top: 4%;
     border: 0.5px solid lightgrey;
     border-radius: 2px;
-    padding: 20px;
+    padding: 10px;
     color:   gray;
 
 }
 
-.content{
+.name{
     width: 50%;
+}
+.content{
+    width: 100%;
     display: flex;
     padding-top: 3%;
-    padding-left: 5%;
 }
 
 .MuiFormLabel-root {
@@ -29,17 +31,18 @@
 }
 
 .phonenumber{
+    width: 50%;
     margin-left: 7%;
 }
 
 .address{
-    padding-left: 5%;
+    padding-left: 0.1%;
     padding-top: 3%;
 }
 
 .text{
     font-size: 22px;
-    width: 50%;
+    width: 100%;
     display: flex;
     font-family: inherit;
     padding-top: 3%;
