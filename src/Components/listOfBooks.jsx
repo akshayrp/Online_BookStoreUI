@@ -81,7 +81,7 @@ class SimpleCard extends Component {
         });
 
         return (
-            <Container className={'listContainer'} style={{marginBottom: "3%"}}>
+            <Container className={'listContainer'} style={{marginBottom: "3%"}} >
                 {Books}
             </Container>
 
