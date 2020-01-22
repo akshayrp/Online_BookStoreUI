@@ -1,59 +1,63 @@
-.detailsBox{
-    margin-left: 13%;
-    margin-top: 7%;
-}
-.continueButton{
-    margin-left: 80%;
+
+.subMain{
+    width: 55%;
+    height: 100%;
+    margin-left: 14%;
     margin-top: 4%;
-}
-
-.userAddress.MuiFormControl-root{
-    width: 250px;
-    margin: 8px;
-}
-
-.user {
-    width: 9%;
-}
-.makeStyles-root-1{
-    margin-top: 15px;
-}
-
-.MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl{
-    width: 206%;
+    border: 0.5px solid lightgrey;
+    border-radius: 2px;
+    padding: 20px;
+    color:   gray;
 
 }
-.MuiBox-root-130{
-    color: black;
+
+.content{
+    width: 50%;
+    display: flex;
+    padding-top: 3%;
+    padding-left: 5%;
 }
 
-.SummaryBox{
-    margin-right: 20%;
+.MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.00938em;
 }
 
-.BootomBar{
-    margin-top: 10%;
-}
-input[type="radio"] {
-    margin-right: 0;
+.phonenumber{
+    margin-left: 7%;
 }
 
-.RadioButton1{
-    color: black;
+.address{
+    padding-left: 5%;
+    padding-top: 3%;
 }
 
-.RadioButton2{
-    color: black;
-    margin-left: 26%;
-    margin-top: -17.1px;
+.text{
+    font-size: 22px;
+    width: 50%;
+    display: flex;
+    font-family: inherit;
+    padding-top: 3%;
+    padding-left: 5%;
 }
 
-.RadioButton3{
-    color: black;
-    margin-left: 50%;
-    margin-top: -3.8%;
+.radioButtons{
+    padding-left: 17%;
+    padding-top: 4%;
 }
 
-.NameAndEmail{
-    color: black;
+.orderSummary{
+    width: 55%;
+    height: 100%;
+    margin-left: 14%;
+    margin-top: 2%;
+    border: 0.5px solid lightgrey;
+    border-radius: 2px;
+    padding: 20px;
+    color:   gray;
 }
