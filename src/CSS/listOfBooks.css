@@ -6,8 +6,8 @@
 }
 .cardImage{
     text-align: center;
-    display: block;
     justify-content: center;
+    display: block;
     align-items: center;
     margin: auto;
     color: grey;
@@ -48,4 +48,7 @@
 .quantityButton.plusMinus{
     border: unset;
     border: white;
+}
+.cartButton{
+
 }

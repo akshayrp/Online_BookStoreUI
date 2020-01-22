@@ -7,6 +7,11 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Icon} from "@material-ui/core";
+import IconButton from '@material-ui/core/IconButton';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import CartList from "./listOfBooks";
+
+
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -84,8 +89,7 @@ export default function PrimarySearchAppBar() {
                     <Icon
                         edge="start"
                         className={classes.BookIcon}
-                        color="inherit"
-                    >
+                        color="inherit">
                         <MenuBookIcon/>
                     </Icon>
                     <Typography className={classes.title} variant="h6" noWrap>
@@ -104,8 +108,15 @@ export default function PrimarySearchAppBar() {
                             inputProps={{'aria-label': 'search'}}
                         />
                     </div>
+
+                    <IconButton color="white" aria-label="add to shopping cart" >
+                        <AddShoppingCartIcon/>
+                    </IconButton>
+
+
                 </Toolbar>
             </AppBar>
         </div>
     );
 }
+
