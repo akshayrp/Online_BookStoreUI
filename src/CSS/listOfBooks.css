@@ -11,14 +11,14 @@
     align-items: center;
     margin: auto;
     color: grey;
-    width: 54%;
-    height: 140px;
+    width: 49%;
+    height: 128px;
 }
 .bookName{
     padding-block-start: 4%;
     font-weight: bold;
     padding-left: 5%;
-    font-size: 80%;
+    font-size: 100%;
 }
 .authorName{
     padding-block-start: 1%;
@@ -39,15 +39,51 @@
     float: left;
 }
 .imageBackGround{
-    background-color: #F5F5F5;
+    background-color: #F5F5F5;}
+
+
+.Buttons{
+    margin-top: 4%;
 }
-.quantityButton{
-    width: 45%;
-    float: right;
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
 }
-.quantityButton.plusMinus{
-    border: unset;
-    border: white;
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 176%;
+    text-align: center;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 100;
+    left: 100%;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+display: block;
+    z-index: 100;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
 .cartButton{
 

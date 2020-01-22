@@ -9,10 +9,11 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Icon} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
 import CartList from "./listOfBooks";
 
-
-
+import {withRouter,Link} from "react-router-dom";
+import "../App";
 const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
@@ -79,7 +80,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+ export default function PrimarySearchAppBar() {
+
+
     const classes = useStyles();
 
     return (
@@ -108,12 +111,11 @@ export default function PrimarySearchAppBar() {
                             inputProps={{'aria-label': 'search'}}
                         />
                     </div>
-
-                    <IconButton color="white" aria-label="add to shopping cart" >
+                    <Link to={"/Cart"}>
+                    <IconButton color={"white"} arial-label={"add to shopping cart"}>
                         <AddShoppingCartIcon/>
                     </IconButton>
-
-
+                    </Link>
                 </Toolbar>
             </AppBar>
         </div>
