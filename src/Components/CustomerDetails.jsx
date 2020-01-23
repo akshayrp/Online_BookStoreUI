@@ -7,8 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
-import DenseAppBar from "./BottomBar";
-import PrimarySearchAppBar from "./TopToolBar";
 import {withStyles} from '@material-ui/core/styles';
 import {withRouter} from "react-router-dom";
 
@@ -67,7 +65,6 @@ class CustomerDetails extends Component {
     render() {
         const {address, country, email, name, pinCode} = this.state;
         return (<div>
-            <PrimarySearchAppBar/>
             <div className="subMain" style={{height: '600px'}}>
 
                 <h1>CUSTOMER DETAILS</h1>
@@ -132,12 +129,10 @@ class CustomerDetails extends Component {
                             />
                         </RadioGroup>
                     </FormControl>
-
                     <Button variant="contained" color="primary" style={{float: 'right'}} onClick={this.submitHandler}>
                         Continue </Button>
                 </div>
             </div>
-            <DenseAppBar/>
         </div>);
     }
 }

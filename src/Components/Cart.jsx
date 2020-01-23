@@ -1,34 +1,35 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import DenseAppBar from "./BottomBar";
-import PrimarySearchAppBar from "./TopToolBar";
+import React, {Component} from "react";
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CustomerDetails from "./CustomerDetails";
 import CartBookDetails from "./CartBookDetails";
-import ls from 'local-storage';
+import TopToolBar from "./TopToolBar";
+import "../CSS/Cart.css"
+import {withRouter} from "react-router-dom";
 
 
-class Cart extends Component{
-
-    constructor(props) {
-        super(props);
-       /* this.state={
-            title:'',
-            author:'',
-            price:'',
-            quantity:'',
-            item:null,
-        }*/
-    }
-
+class Cart extends Component {
     render() {
-        return (
-            <div>
-                <PrimarySearchAppBar/>
-                <div style={{height:"85vh"}}>
-                    <CartBookDetails/>
-                </div>
-                <DenseAppBar/>
+        return <div >
+            <TopToolBar/>
+            <CartBookDetails/>
+            <div className="expansionPanel">
+                <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon/>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header">
+                        <Typography style={{color:"grey"}}>Customer Details</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <CustomerDetails/>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
             </div>
-        )
+        </div>
     }
 }
 

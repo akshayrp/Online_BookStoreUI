@@ -4,6 +4,7 @@ import "../CSS/CartBookDetails.css"
 import ls from 'local-storage';
 import {Typography} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
+import Button from "@material-ui/core/Button";
 
 class CartBookDetails extends Component {
     book;
@@ -48,12 +49,21 @@ class CartBookDetails extends Component {
 
             )
         });
-        return (<div style={{overflow: 'scroll',  overflowX: "hidden"}} className="main">
-                    <div className={"myCart"}>
-                        My Cart ({Books.length})
-                    </div>
-                        {Books}
+        return (<div style={{overflow: 'scroll', overflowX: "hidden"}} className="main">
+                <div className={"myCart"}>
+                    My Cart ({Books.length})
                 </div>
+                {Books}
+            <Button style={{
+                backgroundColor: "rgb(51, 113, 181)",
+                color: "white",
+                marginLeft: "85%",
+                marginTop: "1%",
+                width: "13%",
+                height: "5vh",
+            }}  aria-controls="panel1a-content"
+                    id="panel1a-header">Proceed</Button>
+            </div>
 
         )
     }

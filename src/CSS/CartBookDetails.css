@@ -6,7 +6,7 @@
     border-radius: 2px;
     padding: 10px;
     color: gray;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
     max-height: 45vh;
 }
 .myCart{
@@ -75,4 +75,5 @@
 .RemoveButton{
     text-decoration: none;
     margin-left: 5%;
+    color: black;
 }

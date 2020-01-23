@@ -19,11 +19,10 @@ class SimpleCard extends Component {
          books.push(selectedItem)
          this.setState({bookCart: books})
          ls.set('bookCart',books)
-         console.log(this.state.bookCart);
      };
 
     async componentDidMount() {
-        const url = "http://13.234.217.171:8080/TallTalesBooks/list";
+        const url = "http://192.168.0.111:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false/*,bookCart:ls.get('bookCart')||[]*/});

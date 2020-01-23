@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React,{Component} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,9 +9,11 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Icon} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import CartList from "./listOfBooks";
-import {withRouter,Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "../App";
+import { Badge } from '@material-ui/core';
+import ls from 'local-storage';
+
 const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
@@ -81,6 +82,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
 
+
     const classes = useStyles();
 
     return (
@@ -114,7 +116,9 @@ export default function PrimarySearchAppBar() {
                     </div>
                     <Link to={"/Cart"}>
                         <IconButton arial-label={"add to shopping cart"}>
-                            <AddShoppingCartIcon style={{color: "white"}}/>
+                            <Badge color="primary" badgeContent={ls.get('bookCart').length} showZero>
+                                <AddShoppingCartIcon style={{color: "white"}}/>
+                            </Badge>
                         </IconButton>
                     </Link>
                 </Toolbar>
