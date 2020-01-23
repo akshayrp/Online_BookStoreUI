@@ -5,29 +5,30 @@ import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
 import {withRouter} from 'react-router-dom';
 import "../App";
-
-class SimpleCard extends Component {
+import {blue} from "@material-ui/core/colors";
+ class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {loading: true, listOfBooks: []};
+        this.state = {loading: true, listOfBooks: [], bookCart: [],text: "Add To Cart"}
     }
 
+    addToCart(selectedItem) {
+        let bookCart = this.state.bookCart;
+        bookCart.push(selectedItem)
+        this.setState({bookCart: bookCart})
+        console.log(this.state.bookCart);
+    };
 
     async componentDidMount() {
-
         const url = "http://192.168.0.106:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false});
     };
 
-    whenClicked = () => {
-        this.props.history.push("/CustomerDetails")
-    }
-
-
     render() {
+        const { text } = this.state
         if (this.state.loading) {
             return <div>loading...</div>;
         }
@@ -37,7 +38,6 @@ class SimpleCard extends Component {
         }
         var Books = this.state.listOfBooks.map((item, i) => {
             return (
-
                 <div className="tooltip">
                     <span className={"tooltiptext"}><h4>Book Details</h4>
                         <div className={"bookDetails"}>{item.description}
@@ -60,18 +60,27 @@ class SimpleCard extends Component {
                             <div className={"bookName"}>{item.bookName}</div>
                             <div className={"authorName"}>{item.authorName}</div>
                             <div className={"bookPrice"}>Rs.{item.price}</div>
-                            <div className={"Buttons"}>
-                                <Button style={{
-                                    backgroundColor: "#A03037",
-                                    color: "white",
-                                    marginLeft: "25%",
-                                    marginTop: "7%",
-                                    width: "52%",
-                                    height: "3em",
-                                    fontSize: "75%",
-                                }} onClick={this.whenClicked}>
-                                    ADD TO CART
-                                </Button>
+                            <div>
+                                {
+                                    this.state.bookCart.filter(book => book.bookId === item.bookId)
+                                        .length === 1 ?
+                                        <Button className={"cartButton"} id={"cartButton"+item.bookId} style={{
+                                            backgroundColor: "blue",
+                                            color: "white",
+                                            marginLeft: "30%",
+                                            marginTop: "7%"
+                                        }} >GO TO CART</Button>
+                                        :
+                                        <Button className={"cartButton"} id={"cartButton"+item.bookId} value="ADD TO CART" style={{
+                                            backgroundColor: "#A03037",
+                                            color: "white",
+                                            marginLeft: "30%",
+                                            marginTop: "7%"
+                                        }} onClick={() => {
+                                            this.addToCart(item)
+                                        }}> {text}
+                                        </Button>
+                                }
                             </div>
                         </div>
                     </Card>
@@ -90,7 +99,6 @@ class SimpleCard extends Component {
 }
 
 export default withRouter(SimpleCard);
-
 
 
 

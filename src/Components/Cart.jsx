@@ -6,6 +6,13 @@ class Cart extends Component{
 
     constructor(props) {
         super(props);
+       /* this.state={
+            title:'',
+            author:'',
+            price:'',
+            quantity:'',
+            item:null,
+        }*/
     }
 
     render() {
@@ -14,7 +21,7 @@ class Cart extends Component{
                 <PrimarySearchAppBar/>
                 <div>
                 <button className={"checkoutButton"}>
-                    CHECKOUT
+                    PROCEED
                 </button>
                 </div>
                 <DenseAppBar/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

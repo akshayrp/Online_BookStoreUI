@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PrimarySearchAppBar from "./TopToolBar";
-
 import DenseAppBar from "./BottomBar";
 import SimpleCard from "./listOfBooks";
 

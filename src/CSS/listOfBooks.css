@@ -6,8 +6,8 @@
 }
 .cardImage{
     text-align: center;
-    display: block;
     justify-content: center;
+    display: block;
     align-items: center;
     margin: auto;
     color: grey;
@@ -84,4 +84,7 @@ display: block;
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+.cartButton{
+
 }
