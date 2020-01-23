@@ -3,16 +3,22 @@ import Card from '@material-ui/core/Card';
 import {Container} from "@material-ui/core";
 import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
-
-
-export default class SimpleCard extends Component {
-    fieldName = "";
+import {withRouter} from 'react-router-dom';
+import "../App";
+import {blue} from "@material-ui/core/colors";
+ class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {loading: true, listOfBooks: []};
+        this.state = {loading: true, listOfBooks: [], bookCart: [],text: "Add To Cart"}
     }
 
+    addToCart(selectedItem) {
+        let bookCart = this.state.bookCart;
+        bookCart.push(selectedItem)
+        this.setState({bookCart: bookCart})
+        console.log(this.state.bookCart);
+    };
 
     async componentDidMount() {
         const url = "http://localhost:8080/TallTalesBooks/list";
@@ -21,9 +27,8 @@ export default class SimpleCard extends Component {
         this.setState({listOfBooks: data, loading: false});
     };
 
-
     render() {
-
+        const { text } = this.state
         if (this.state.loading) {
             return <div>loading...</div>;
         }
@@ -33,54 +38,67 @@ export default class SimpleCard extends Component {
         }
         var Books = this.state.listOfBooks.map((item, i) => {
             return (
-                (i + 1) % 6 === 0 ? <br/> :
+                <div className="tooltip">
+                    <span className={"tooltiptext"}><h4>Book Details</h4>
+                        <div className={"bookDetails"}>{item.description}
+                        </div>
+                    </span>
                     <Card elevation={3}
                           style={{
                               height: '22vmax',
                               width: '16vw',
-                              display: "table-cell",
+                              display: "block",
                               verticalAlign: 'middle',
-                              marginTop: "3%"
-                          }}>
+                              marginTop: "15%"
+                          }} className={"card"}>
+
                         <div className={"imageBackGround"}>
                             <img className={"cardImage"}
-                                 src={item.image}/></div>
+                                 src={item.image}/>
+                        </div>
                         <div className={"BookData"}>
                             <div className={"bookName"}>{item.bookName}</div>
                             <div className={"authorName"}>{item.authorName}</div>
                             <div className={"bookPrice"}>Rs.{item.price}</div>
-                            <div className={""}>
-                                <div className={"bookQuantity"}>Available:{item.quantity}
-                                </div>
-
-                                <div className={"quantityButton"} >Qty :
-                                    <input className={"quantityButton.plusMinus"} type="number" defaultValue={1} min="1" max={item.quantity} />
-                                </div>
-
-
-                            </div>
                             <div>
-                                <Button style={{
-                                    backgroundColor: "#A03037",
-                                    color: "white",
-                                    marginLeft: "30%",
-                                    marginTop: "7%"
-                                }}>
-                                    BUY NOW
-                                </Button>
+                                {
+                                    this.state.bookCart.filter(book => book.bookId === item.bookId)
+                                        .length === 1 ?
+                                        <Button className={"cartButton"} id={"cartButton"+item.bookId} style={{
+                                            backgroundColor: "blue",
+                                            color: "white",
+                                            marginLeft: "30%",
+                                            marginTop: "7%"
+                                        }} >ADDED TO CART</Button>
+                                        :
+                                        <Button className={"cartButton"} id={"cartButton"+item.bookId} value="ADD TO CART" style={{
+                                            backgroundColor: "#A03037",
+                                            color: "white",
+                                            marginLeft: "30%",
+                                            marginTop: "7%"
+                                        }} onClick={() => {
+                                            this.addToCart(item)
+                                        }}> {text}
+                                        </Button>
+                                }
                             </div>
                         </div>
                     </Card>
+                </div>
+
             )
         });
+
         return (
-            <Container className={'listContainer'}>
+            <Container className={'listContainer'} style={{marginBottom: "3%"}} >
                 {Books}
             </Container>
+
         )
     }
 }
 
+export default withRouter(SimpleCard);
 
 
 

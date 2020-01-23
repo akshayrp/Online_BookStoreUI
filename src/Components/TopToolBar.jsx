@@ -7,7 +7,11 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Icon} from "@material-ui/core";
-
+import IconButton from '@material-ui/core/IconButton';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import CartList from "./listOfBooks";
+import {withRouter,Link} from "react-router-dom";
+import "../App";
 const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
@@ -75,6 +79,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
+
+
     const classes = useStyles();
 
     return (
@@ -84,8 +91,7 @@ export default function PrimarySearchAppBar() {
                     <Icon
                         edge="start"
                         className={classes.BookIcon}
-                        color="inherit"
-                    >
+                        color="inherit">
                         <MenuBookIcon/>
                     </Icon>
                     <Typography className={classes.title} variant="h6" noWrap>
@@ -104,8 +110,14 @@ export default function PrimarySearchAppBar() {
                             inputProps={{'aria-label': 'search'}}
                         />
                     </div>
+                    <Link to={"/Cart"}>
+                    <IconButton color={"white"} arial-label={"add to shopping cart"}>
+                        <AddShoppingCartIcon/>
+                    </IconButton>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </div>
     );
 }
+
