@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import DenseAppBar from "./BottomBar";
 import PrimarySearchAppBar from "./TopToolBar";
+import ls from 'local-storage';
+
+
 class Cart extends Component{
 
     constructor(props) {
@@ -16,6 +19,7 @@ class Cart extends Component{
     }
 
     render() {
+        console.log(ls.get('bookCart'))
         return(
             <div>
                 <PrimarySearchAppBar/>
