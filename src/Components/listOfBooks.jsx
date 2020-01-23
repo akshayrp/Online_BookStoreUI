@@ -6,17 +6,19 @@ import Button from "@material-ui/core/Button";
 import {withRouter} from 'react-router-dom';
 import "../App";
 import {blue} from "@material-ui/core/colors";
+import ls from 'local-storage';
  class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {loading: true, listOfBooks: [], bookCart: [],text: "Add To Cart"}
+        this.state = {loading: true, listOfBooks: [], bookCart: ls.get('bookCart') || [],text: "Add To Cart"}
     }
 
     addToCart(selectedItem) {
-        let bookCart = this.state.bookCart;
-        bookCart.push(selectedItem)
-        this.setState({bookCart: bookCart})
+        let books = this.state.bookCart;
+        books.push(selectedItem)
+        this.setState({bookCart: books})
+        ls.set('bookCart',books)
         console.log(this.state.bookCart);
     };
 
@@ -24,7 +26,7 @@ import {blue} from "@material-ui/core/colors";
         const url = "http://localhost:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({listOfBooks: data, loading: false});
+        this.setState({listOfBooks: data, loading: false/*,bookCart:ls.get('bookCart')||[]*/});
     };
 
     render() {
@@ -65,16 +67,16 @@ import {blue} from "@material-ui/core/colors";
                                     this.state.bookCart.filter(book => book.bookId === item.bookId)
                                         .length === 1 ?
                                         <Button className={"cartButton"} id={"cartButton"+item.bookId} style={{
-                                            backgroundColor: "blue",
+                                            backgroundColor: "#3371B5",
                                             color: "white",
-                                            marginLeft: "30%",
+                                            marginLeft: "20%",
                                             marginTop: "7%"
                                         }} >ADDED TO CART</Button>
                                         :
                                         <Button className={"cartButton"} id={"cartButton"+item.bookId} value="ADD TO CART" style={{
                                             backgroundColor: "#A03037",
                                             color: "white",
-                                            marginLeft: "30%",
+                                            marginLeft: "20%",
                                             marginTop: "7%"
                                         }} onClick={() => {
                                             this.addToCart(item)
