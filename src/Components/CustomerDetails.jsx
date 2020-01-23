@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../CSS/CustomerDetails.css'
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';

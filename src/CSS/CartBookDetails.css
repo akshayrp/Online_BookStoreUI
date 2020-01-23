@@ -1,0 +1,77 @@
+.main{
+    width: 62%;
+    margin-left: 14%;
+    margin-top: 4%;
+    border: 0.5px solid lightgrey;
+    border-radius: 2px;
+    padding: 10px;
+    color: gray;
+    margin-bottom: 10%;
+}
+.myCart{
+    font-size: 150%;
+    margin-top: 2%;
+    color: darkslategrey;
+    margin-bottom: 3%;
+}
+
+
+.bookData{
+    background-color: #F5F5F5;
+    max-width: 30%;
+    float: left;
+    width: 30%;
+}
+
+.image{
+    text-align: center;
+    justify-content: center;
+    display: block;
+    align-items: center;
+    margin: auto;
+    color: grey;
+    width: 55%;
+    height: 171px;
+}
+
+.BookDetails{
+    margin-left: 30%;
+    margin-bottom: 3%;
+
+}
+.bookName{
+    padding-block-start: 4%;
+    font-weight: bold;
+    padding-left: 5%;
+    font-size: 100%;
+    color: black;
+}
+.authorName{
+    padding-left: 5%;
+    font-size: 74%;
+    color: dimgrey;
+}
+.bookPrice{
+    padding-left: 5%;
+    font-size: 90%;
+    font-weight: bold;
+    color: black;
+}
+
+.quantity{
+    padding-left: 5%;
+    font-size: 90%;
+    font-weight: bold;
+    color: dimgrey;
+}
+.quantityButton{
+    color: black;
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 94%;
+    display: flex;
+}
+.RemoveButton{
+    text-decoration: none;
+    margin-left: 5%;
+}

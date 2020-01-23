@@ -14,13 +14,13 @@ import ls from 'local-storage';
         this.state = {loading: true, listOfBooks: [], bookCart: ls.get('bookCart') || [],text: "Add To Cart"}
     }
 
-    addToCart(selectedItem) {
-        let books = this.state.bookCart;
-        books.push(selectedItem)
-        this.setState({bookCart: books})
-        ls.set('bookCart',books)
-        console.log(this.state.bookCart);
-    };
+     addToCart(selectedItem) {
+         let books = this.state.bookCart;
+         books.push(selectedItem)
+         this.setState({bookCart: books})
+         ls.set('bookCart',books)
+         console.log(this.state.bookCart);
+     };
 
     async componentDidMount() {
         const url = "http://localhost:8080/TallTalesBooks/list";

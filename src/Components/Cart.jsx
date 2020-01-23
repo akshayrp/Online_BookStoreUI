@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import DenseAppBar from "./BottomBar";
 import PrimarySearchAppBar from "./TopToolBar";
+import CartBookDetails from "./CartBookDetails";
 import ls from 'local-storage';
 
 
@@ -19,18 +20,16 @@ class Cart extends Component{
     }
 
     render() {
-        console.log(ls.get('bookCart'))
-        return(
+        return (
             <div>
                 <PrimarySearchAppBar/>
-                <div>
-                <button className={"checkoutButton"}>
-                    PROCEED
-                </button>
+                <div style={{height:"85vh"}}>
+                    <CartBookDetails/>
                 </div>
-                <DenseAppBar/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                <DenseAppBar/>
             </div>
         )
     }
 }
+
 export default withRouter(Cart);

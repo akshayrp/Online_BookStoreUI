@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -80,8 +81,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function PrimarySearchAppBar() {
 
-
-
     const classes = useStyles();
 
     return (
@@ -110,14 +109,16 @@ export default function PrimarySearchAppBar() {
                             inputProps={{'aria-label': 'search'}}
                         />
                     </div>
+                    <div>
+                        Cart
+                    </div>
                     <Link to={"/Cart"}>
-                    <IconButton color={"white"} arial-label={"add to shopping cart"}>
-                        <AddShoppingCartIcon/>
-                    </IconButton>
+                        <IconButton arial-label={"add to shopping cart"}>
+                            <AddShoppingCartIcon style={{color: "white"}}/>
+                        </IconButton>
                     </Link>
                 </Toolbar>
             </AppBar>
         </div>
     );
 }
-
