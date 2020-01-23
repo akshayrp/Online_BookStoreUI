@@ -48,15 +48,13 @@ class CartBookDetails extends Component {
 
             )
         });
-        return (
-            <div>
-                <div className={"main"} style={{height: "fit-content"}}>
+        return (<div style={{overflow: 'scroll',  overflowX: "hidden"}} className="main">
                     <div className={"myCart"}>
                         My Cart ({Books.length})
                     </div>
-                    {Books}
+                        {Books}
                 </div>
-            </div>
+
         )
     }
 }

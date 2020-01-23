@@ -5,9 +5,9 @@ import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
 import {withRouter} from 'react-router-dom';
 import "../App";
-import {blue} from "@material-ui/core/colors";
 import ls from 'local-storage';
- class SimpleCard extends Component {
+
+class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -23,7 +23,7 @@ import ls from 'local-storage';
      };
 
     async componentDidMount() {
-        const url = "http://localhost:8080/TallTalesBooks/list";
+        const url = "http://13.234.217.171:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false/*,bookCart:ls.get('bookCart')||[]*/});

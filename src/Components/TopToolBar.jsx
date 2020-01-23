@@ -96,7 +96,7 @@ export default function PrimarySearchAppBar() {
                     <Typography className={classes.title} variant="h6" noWrap>
                         TallTales Books
                     </Typography>
-                    <div className={classes.search}>
+                        <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>
                         </div>

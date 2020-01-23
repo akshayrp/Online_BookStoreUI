@@ -7,6 +7,7 @@
     padding: 10px;
     color: gray;
     margin-bottom: 10%;
+    max-height: 45vh;
 }
 .myCart{
     font-size: 150%;
