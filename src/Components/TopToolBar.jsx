@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,9 +9,9 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Icon} from "@material-ui/core";
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import CartList from "./listOfBooks";
-import {withRouter,Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "../App";
+
 const useStyles = makeStyles(theme => ({
     grow: {
         flexGrow: 1,
