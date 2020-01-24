@@ -17,6 +17,14 @@ class SimpleCard extends Component {
         }
     }
 
+    async componentDidMount() {
+        const url = "http://192.168.0.111:8080/TallTalesBooks/list";
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({listOfBooks: data, loading: false,bookCart:[]});
+    };
+
+
      addToCart(selectedItem) {
          let books = this.state.bookCart;
          books.push(selectedItem)
@@ -25,12 +33,6 @@ class SimpleCard extends Component {
 
      };
 
-    async componentDidMount() {
-        const url = "http://192.168.0.111:8080/TallTalesBooks/list";
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({listOfBooks: data, loading: false,bookCart:[]});
-    };
 
     render() {
         const { text } = this.state

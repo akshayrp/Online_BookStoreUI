@@ -15,11 +15,20 @@ import "../App";
 
 class ToolBar extends Component{
 
-
     constructor(props) {
         super(props);
         this.state = {
-            bookCart : JSON.parse(localStorage.getItem('bookCart'))
+            badgeContent : 0
+        }
+    }
+
+
+
+    async componentDidMount(){
+        if (this.state.badgeContent < localStorage.getItem("bookCart").length)
+        {
+            await this.setState({badgeContent : JSON.parse(localStorage.getItem("bookCart")).length}
+            )
         }
     }
 
@@ -72,9 +81,8 @@ render() {
                     Cart
                 </Typography>
                 <Link to={"/Cart"}>
-
                     <IconButton arial-label={"add to shopping cart"}>
-                        <Badge  color="primary" badgeContent={this.state.bookCart.length >0?this.state.bookCart.length:"0"} >
+                        <Badge  color="primary" badgeContent={this.state.badgeContent} >
                             <AddShoppingCartIcon style={{color: "white"}}/>
                         </Badge>
                     </IconButton>

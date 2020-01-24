@@ -107,7 +107,6 @@ class CustomerDetails extends Component {
     render() {
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
-                <h1>CUSTOMER DETAILS</h1>
                 <form method="post" name="userRegistrationForm" onSubmit={this.submituserRegistrationForm} >
                     <div className='content'>
                         <div className='name'>
