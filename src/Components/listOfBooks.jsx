@@ -5,27 +5,27 @@ import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
 import {withRouter} from 'react-router-dom';
 import "../App";
-import ls from 'local-storage';
 
 class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {loading: true, listOfBooks: [], bookCart: ls.get('bookCart') || [],text: "Add To Cart"}
+        this.state = {loading: true, listOfBooks: [],text: "Add To Cart"}
     }
 
      addToCart(selectedItem) {
          let books = this.state.bookCart;
          books.push(selectedItem)
          this.setState({bookCart: books})
-         ls.set('bookCart',books)
+         localStorage.setItem('bookCart',books)
+
      };
 
     async componentDidMount() {
         const url = "http://192.168.0.111:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({listOfBooks: data, loading: false/*,bookCart:ls.get('bookCart')||[]*/});
+        this.setState({listOfBooks: data, loading: false,bookCart:localStorage.getItem('bookCart')||[]});
     };
 
     render() {

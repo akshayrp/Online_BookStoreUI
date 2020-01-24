@@ -12,7 +12,7 @@ class CartBookDetails extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {book: ls.get('bookCart') || []}
+        this.state = {book: ls.get('bookCart') || 0}
     }
 
     removeItem(i) {

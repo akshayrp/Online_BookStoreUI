@@ -1,5 +1,9 @@
 .root{
     flexGrow: 1;
+    position: fixed;
+    bottom: 0;
+    margin-left: -8px;
+    width: 100%;
 }
 
 .bottomBar{

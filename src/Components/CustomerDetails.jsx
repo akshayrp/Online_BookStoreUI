@@ -41,13 +41,6 @@ class CustomerDetails extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    handleValueChange = (event) => {
-        console.log(event.target);
-        const {name, value} = event.target
-        console.log(this.setState({
-            [name]: value
-        }))
-    }
 
     submitHandler = (e) => {
         e.preventDefault()
