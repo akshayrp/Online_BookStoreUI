@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../CSS/CustomerDetails.css'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {withRouter} from "react-router-dom";
-
 class CustomerDetails extends Component {
     constructor() {
         super();
@@ -44,7 +43,6 @@ class CustomerDetails extends Component {
     }
 
     validateForm() {
-
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
@@ -91,6 +89,7 @@ class CustomerDetails extends Component {
             formIsValid = false;
             errors["address"] = "*Enter your Address.";
         }
+
 
         if (typeof fields["address"] !== "undefined") {
             if (!fields["address"].match(/^[a-zA-Z0-9]*$/)) {
