@@ -4,13 +4,16 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {withRouter} from "react-router-dom";
+import DenseAppBar from "./BottomBar";
 class CustomerDetails extends Component {
     constructor() {
         super();
         this.state = {
             fields: {},
-            errors: {}
+            errors: {},
+            displaySummary:false
         }
+        this.displaySummary= this.displaySummary.bind(this)
 
         this.handleChange = this.handleChange.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
@@ -40,6 +43,10 @@ class CustomerDetails extends Component {
             alert("Form submitted");
         }
 
+    }
+
+    displaySummary() {
+        this.setState({displaySummary: true})
     }
 
     validateForm() {
@@ -107,6 +114,7 @@ class CustomerDetails extends Component {
     render() {
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
+                <div className={"FormTitle"}>Customer Details</div>
                 <form method="post" name="userRegistrationForm" onSubmit={this.submituserRegistrationForm} >
                     <div className='content'>
                         <div className='name'>
@@ -172,9 +180,15 @@ class CustomerDetails extends Component {
                         </div>
                     </div>
                     <div className='emptydiv'>
-                        <input type="submit" className="button" value="Continue" />
+                        <input type="submit" className="button" value="Continue" onClick={this.displaySummary}/>
                     </div>
                 </form>
+                {this.state.displaySummary ? <p>give tag of display summary class</p> :
+                    <div className={"DisplaySummary"}>
+                        <div className={"summaryText"}>Order Summary</div>
+                    </div>
+                }
+                <DenseAppBar/>
             </div>
         </div>);
     }

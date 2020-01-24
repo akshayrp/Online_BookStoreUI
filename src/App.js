@@ -1,9 +1,8 @@
-
 import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import DashBoard from "./Components/DashBoard";
 import CustomerDetails from "./Components/CustomerDetails";
-import Cart from "./Components/Cart";
+import CartBookDetails from "./Components/CartBookDetails";
 import ToolBar from "./Components/ToolBar";
 
 require('dotenv').config()
@@ -12,13 +11,14 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
             <BrowserRouter>
                 <div>
-<Switch>
+                    <Switch>
                         <Route path="/" component={DashBoard} exact={true}/>
-                        <Route path="/Cart" component={Cart} exact={true}/>
+                        <Route path="/Cart" component={CartBookDetails} exact={true}/>
                     </Switch>
                 </div>
             </BrowserRouter>

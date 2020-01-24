@@ -48,18 +48,11 @@
     padding-top: 3%;
 }
 
-.text{
-    font-size: 22px;
-    width: 100%;
-    display: flex;
-    font-family: inherit;
-    padding-top: 3%;
-    padding-left: 5%;
-}
+
 
 .emptydiv{
-    padding-left: 17%;
-    padding-top: 4%;
+    padding-left: 80%;
+    padding-top: 6%;
 }
 
 .orderSummary{
@@ -74,9 +67,9 @@
 }
 
 
-/*new css*/
+
 .button {
-    background-color: blue;
+    background-color: #3371B5;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -86,6 +79,7 @@
     font-size: 16px;
     margin: 7px 2px;
     cursor: pointer;
+    height: 7vh
 }
 input[type=text], select {
     width: 100%;
@@ -104,4 +98,22 @@ input[type=text], select {
 
 .sucessMsg {
     color: #6B8E23;
+}
+
+.FormTitle{
+    margin-left: -2%;
+    font-size: 153%;
+}
+
+.DisplaySummary{
+    width: 64%;
+    margin-left: 14%;
+    height: 8vh;
+}
+
+.summaryText{
+    margin-left: -23%;
+    font-size: 150%;
+    padding-top: 10%;
+    color: grey;
 }

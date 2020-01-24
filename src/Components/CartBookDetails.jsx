@@ -4,24 +4,24 @@ import "../CSS/CartBookDetails.css"
 import {Typography} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import Button from "@material-ui/core/Button";
+import ToolBar from "./ToolBar";
+import DenseAppBar from "./BottomBar";
+import CustomerDetails from "./CustomerDetails";
 
 class CartBookDetails extends Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            book:[]
+            book:[],
+            displayDetails:false
         }
+        this.getDetails= this.getDetails.bind(this)
     }
 
     async componentDidMount() {
       let  data = JSON.parse(localStorage.getItem('bookCart'))
         await this.setState({book: data});
-        console.log(this.state.book)
-
-        /*let data = JSON.parse(localStorage.getItem("abc"));
-        await this.setState({loading: false});
-        await this.setState({person: data});*/
     };
 
 
@@ -32,6 +32,10 @@ class CartBookDetails extends Component {
         this.setState({book: updatedCart})
         localStorage.clear()
        localStorage.setItem('bookCart', this.state.book)
+    }
+
+    getDetails() {
+        this.setState({displayDetails: true})
     }
 
 
@@ -60,7 +64,9 @@ class CartBookDetails extends Component {
 
             )
         });
-        return (<div style={{overflow: 'scroll', overflowX: "hidden"}} className="main">
+        return (<div>
+                <ToolBar/>
+            <div style={{overflow: 'scroll', overflowX: "hidden"}} className="main">
                 <div className={"myCart"}>
                     My Cart ({Books.length})
                 </div>
@@ -73,9 +79,20 @@ class CartBookDetails extends Component {
                 width: "13%",
                 height: "5vh",
             }}  aria-controls="panel1a-content"
-                    id="panel1a-header">Proceed</Button>
+                    id="panel1a-header" onClick={() => this.getDetails()}>Proceed</Button>
             </div>
-
+                {this.state.displayDetails ? <CustomerDetails /> :
+                <div>
+                    <div className={"CustomerDetails"}>
+                   <div className={"HeadText"}>Customer Details</div>
+                </div>
+                    <div className={"CustomerDetails"}>
+                    <div className={"HeadText"}>Order Summary</div>
+                    </div>
+                </div>
+                }
+                <DenseAppBar/>
+            </div>
         )
     }
 }

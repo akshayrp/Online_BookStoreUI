@@ -29,6 +29,19 @@ class Cart extends Component {
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </div>
+            <div className="expansionPanel">
+                <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon/>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header">
+                        <Typography style={{color: "grey"}}>Order Summary</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <CustomerDetails/>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+            </div>
         </div>
     }
 }

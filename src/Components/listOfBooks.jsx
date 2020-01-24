@@ -8,29 +8,33 @@ import "../App";
 
 class SimpleCard extends Component {
 
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
             loading: true,
             listOfBooks: [],
-            text: "Add To Cart"
+            text: "Add To Cart",
+            bookCart:[],
+            clickCount:0
         }
+        this.addToCart = this.addToCart.bind(this)
     }
 
     async componentDidMount() {
         const url = "http://192.168.0.111:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({listOfBooks: data, loading: false,bookCart:[]});
+        this.setState({listOfBooks: data, loading: false});
     };
 
 
      addToCart(selectedItem) {
+         this.props.setCounter( this.state.clickCount+1)
+         this.setState({clickCount : this.state.clickCount+1})
          let books = this.state.bookCart;
          books.push(selectedItem)
          this.setState({bookCart: books})
          localStorage.setItem('bookCart',JSON.stringify(books))
-
      };
 
 

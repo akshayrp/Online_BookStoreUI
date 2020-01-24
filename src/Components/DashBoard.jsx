@@ -6,14 +6,23 @@ import CustomerDetails from "./CustomerDetails";
 
 export default class DashBoard extends  Component{
 
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
+        this.state = {
+            clickCounter: 0
+        }
+        this.setCounter = this.setCounter.bind(this);
     }
+
+    setCounter(count) {
+        this.state.clickCounter = count
+    }
+
     render(){
         return (
             <div>
-                <PrimarySearchAppBar/>
-                <SimpleCard/>
+                <PrimarySearchAppBar clickCounter={this.state.clickCounter}/>
+                <SimpleCard setCounter={this.setCounter}/>
                <DenseAppBar/>
             </div>
         )
