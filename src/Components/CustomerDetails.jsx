@@ -173,7 +173,7 @@ class CustomerDetails extends Component {
                         </div>
                     </div>
                     <div className='emptydiv'>
-                        <input type="submit" class="button" value="Continue" />
+                        <input type="submit" className="button" value="Continue" />
                     </div>
                 </form>
             </div>

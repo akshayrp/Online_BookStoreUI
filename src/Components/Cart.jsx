@@ -6,15 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CustomerDetails from "./CustomerDetails";
 import CartBookDetails from "./CartBookDetails";
-import TopToolBar from "./toolBar";
+import ToolBar from "./ToolBar";
 import "../CSS/Cart.css"
 import {withRouter} from "react-router-dom";
 
 
 class Cart extends Component {
     render() {
-        return <div >
-            <TopToolBar/>
+        return <div>
+            <ToolBar/>
             <CartBookDetails/>
             <div className="expansionPanel">
                 <ExpansionPanel>
@@ -22,7 +22,7 @@ class Cart extends Component {
                         expandIcon={<ExpandMoreIcon/>}
                         aria-controls="panel1a-content"
                         id="panel1a-header">
-                        <Typography style={{color:"grey"}}>Customer Details</Typography>
+                        <Typography style={{color: "grey"}}>Customer Details</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                         <CustomerDetails/>

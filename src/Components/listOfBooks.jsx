@@ -10,14 +10,18 @@ class SimpleCard extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {loading: true, listOfBooks: [],text: "Add To Cart"}
+        this.state = {
+            loading: true,
+            listOfBooks: [],
+            text: "Add To Cart"
+        }
     }
 
      addToCart(selectedItem) {
          let books = this.state.bookCart;
          books.push(selectedItem)
          this.setState({bookCart: books})
-         localStorage.setItem('bookCart',books)
+         localStorage.setItem('bookCart',JSON.stringify(books))
 
      };
 
@@ -25,7 +29,7 @@ class SimpleCard extends Component {
         const url = "http://192.168.0.111:8080/TallTalesBooks/list";
         const response = await fetch(url);
         const data = await response.json();
-        this.setState({listOfBooks: data, loading: false,bookCart:localStorage.getItem('bookCart')||[]});
+        this.setState({listOfBooks: data, loading: false,bookCart:[]});
     };
 
     render() {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PrimarySearchAppBar from "./toolBar";
+import PrimarySearchAppBar from "./ToolBar";
 import DenseAppBar from "./BottomBar";
 import SimpleCard from "./listOfBooks";
 import CustomerDetails from "./CustomerDetails";

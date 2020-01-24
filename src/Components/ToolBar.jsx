@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../CSS/dashboard.css';
+import '../CSS/ToolBar.css';
 import InputBase from '@material-ui/core/InputBase';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from '@material-ui/core/IconButton';
@@ -18,7 +18,9 @@ class ToolBar extends Component{
 
     constructor(props) {
         super(props);
-        this.state = { bookCart : localStorage.getItem('bookCart')||localStorage.getItem('bookCart') === 0}
+        this.state = {
+            bookCart : JSON.parse(localStorage.getItem('bookCart'))
+        }
     }
 
     handleSearch = (event) => {
@@ -38,15 +40,6 @@ class ToolBar extends Component{
     //     })
     // }
 
-     checkLength(){
-        if(this.state.bookCart === "")
-        {
-            console.log("empty")
-            return "0"
-        }
-        console.log("data")
-        return "1"
-    }
 
 render() {
     return<div className='main1'>
@@ -75,12 +68,13 @@ render() {
                         )}
                     />
                 </div>
-                <div>
+                <Typography style={{color:"white"}}>
                     Cart
-                </div>
+                </Typography>
                 <Link to={"/Cart"}>
+
                     <IconButton arial-label={"add to shopping cart"}>
-                        <Badge  badgeContent={()=>  this.checkLength} >
+                        <Badge  color="primary" badgeContent={this.state.bookCart.length >0?this.state.bookCart.length:"0"} >
                             <AddShoppingCartIcon style={{color: "white"}}/>
                         </Badge>
                     </IconButton>

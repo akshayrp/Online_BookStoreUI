@@ -1,26 +1,37 @@
 import {Link, withRouter} from "react-router-dom";
 import React, {Component} from "react";
 import "../CSS/CartBookDetails.css"
-import ls from 'local-storage';
 import {Typography} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import Button from "@material-ui/core/Button";
 
 class CartBookDetails extends Component {
-    book;
-
 
     constructor(props, context) {
         super(props, context);
-        this.state = {book: ls.get('bookCart') || 0}
+        this.state = {
+            book:[]
+        }
     }
+
+    async componentDidMount() {
+      let  data = JSON.parse(localStorage.getItem('bookCart'))
+        await this.setState({book: data});
+        console.log(this.state.book)
+
+        /*let data = JSON.parse(localStorage.getItem("abc"));
+        await this.setState({loading: false});
+        await this.setState({person: data});*/
+    };
+
 
     removeItem(i) {
         let updatedCart = this.state.book
         updatedCart.splice(i, 1)
         console.log(updatedCart)
         this.setState({book: updatedCart})
-        ls.set('bookCart', this.book)
+        localStorage.clear()
+       localStorage.setItem('bookCart', this.state.book)
     }
 
 
@@ -68,5 +79,7 @@ class CartBookDetails extends Component {
         )
     }
 }
+
+
 
 export default withRouter(CartBookDetails)
