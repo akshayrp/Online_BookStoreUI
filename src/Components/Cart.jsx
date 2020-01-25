@@ -9,8 +9,8 @@ import {withRouter} from 'react-router-dom';
 class Cart extends Component {
 
 
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
             book: [],
         }
@@ -20,6 +20,7 @@ class Cart extends Component {
     async componentDidMount() {
         let data = JSON.parse(localStorage.getItem('bookCart'))
         await this.setState({book: data});
+        {console.log("soieth",this.props.totalAmount)}
     };
 
     handleClick = () => {
@@ -27,6 +28,7 @@ class Cart extends Component {
     }
 
     render() {
+
         var Books = this.state.book.map((item, i) => {
             return (
 
@@ -47,10 +49,10 @@ class Cart extends Component {
                                 fontFamily: 'Arial, Helvetica, sans-serif',
                                 fontWeight: '600'
                             }}>Rs. {item.price}</Typography>
+                            {this.props.totalAmount}
                         </div>
                     </div>
                 </Card>
-
             )
         });
         return (<div>
@@ -58,12 +60,12 @@ class Cart extends Component {
                     <div className={"summaryText"}>Order Summary</div>
                 </div>
                 {Books}
-
                 <div className="chekoutButton">
                     <Button variant="contained" color="primary" onClick={this.handleClick}>
                         Checkout
                     </Button>
                 </div>
+
             </div>
         )
     }

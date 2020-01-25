@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../CSS/CustomerDetails.css'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import DenseAppBar from "./BottomBar";
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CartBookDetails from "./CartBookDetails";
 import Cart from "./Cart";
 
 class CustomerDetails extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             fields: {},
             errors: {},
             displaySummary:false,
             Books:[],
-            formFilledSuccess:false
+            selectValue:"India"
         }
-        this.displaySummary= this.displaySummary.bind(this)
 
         this.handleChange = this.handleChange.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
@@ -34,14 +29,10 @@ class CustomerDetails extends Component {
         this.setState({
             fields
         });
-
+        console.log("country",this.state.fields.country)
+        console.log("state",this.state.fields.emailid)
     }
 
-    displaySummary(){
-        if(this.state.formFilledSuccess) {
-            this.setState({displaySummary: true})
-        }
-        }
 
     submituserRegistrationForm(e) {
         e.preventDefault();
@@ -52,11 +43,10 @@ class CustomerDetails extends Component {
             fields["mobileno"] = "";
             fields["pinCode"] = "";
             fields["address"] = "";
-            fields["country"] = "";
-            this.setState({ fields: fields,forFilledSuccess:true });
+            fields["country"] ="";
+            this.setState({ fields: fields,displaySummary: true });
             alert("Form submitted");
         }
-
     }
 
 
@@ -121,17 +111,15 @@ class CustomerDetails extends Component {
         });
         return formIsValid;
     }
-onClick(){
-    this.submituserRegistrationForm();
-    this.displaySummary();
-}
+
 
 
     render() {
+        var message='You selected '+this.state.selectValue;
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
                 <div className={"FormTitle"}>Customer Details</div>
-                <form  name="userRegistrationForm" onSubmit={this.onClick} >
+                <form  name="userRegistrationForm" onSubmit={this.submituserRegistrationForm} >
                     <div className='content'>
                         <div className='name'>
                             <label>Name</label>
@@ -189,18 +177,19 @@ onClick(){
                         </div>
                         <div className='phonenumber'>
                             <label>Country:</label>
-                            <select>
+                            <select value={this.state.fields.country}
+                                    onChange={this.handleChange} >
                                 <option value="India">India</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>
                     <div className='emptydiv'>
-                        <input type="submit" className="button" value="Continue"/>
+                        <input type="submit" className="button" value="Continue" />
                     </div>
                 </form>
                 {this.state.displaySummary ?
-                        <Cart/>
+                        <Cart totalAmount={this.props.totalAmount}/>
                         :
                     <div className={"DisplaySummary"}>
                         <div className={"summaryText"}>Order Summary</div>

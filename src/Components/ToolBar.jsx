@@ -30,7 +30,7 @@ class ToolBar extends Component {
                     <Typography className={"title"} variant="h6" noWrap>
                         TallTales Books
                     </Typography>
-                    <Typography style={{color: "white"}}>
+                    <Typography style={{color: "white",marginLeft: '45%'}}>
                         Cart
                     </Typography>
                     <Link to={"/Cart"}>

@@ -13,36 +13,59 @@ class CartBookDetails extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            book:[],
-            displayDetails:false
+            books:[],
+            displayDetails:false,
+            selectedBooks:[]
         }
         this.getDetails= this.getDetails.bind(this)
+        this.handleChange=this.handleChange.bind(this);
+        this.calculateTotalPrice=this.calculateTotalPrice.bind(this);
     }
 
     async componentDidMount() {
       let  data = JSON.parse(localStorage.getItem('bookCart'))
-        await this.setState({book: data});
+        await this.setState({books: data, totalAmount:0})
+        this.state.selectedBooks = data
+      this.state.selectedBooks.map(book => book.quantity = 1);
+
     };
 
 
     removeItem(i) {
-        let updatedCart = this.state.book
+        let updatedCart = this.state.books
         updatedCart.splice(i, 1)
-        console.log(updatedCart)
-        this.setState({book: updatedCart})
+        this.setState({books: updatedCart})
         localStorage.clear()
-       localStorage.setItem('bookCart', this.state.book)
+       localStorage.setItem('bookCart', this.state.books)
     }
 
     getDetails() {
-        if(this.state.book.length > 0) {
+        if(this.state.books.length > 0) {
             this.setState({displayDetails: true})
         }
     }
 
+    handleChange(event){
+        this.state.selectedBooks.filter(function(item){
+            let num=Number(item.bookId);
+            if(num == event.target.id){
+                item.quantity = event.target.value;
+            };
+        });
+        this.calculateTotalPrice(this.state.selectedBooks)
+    }
+
+
+    calculateTotalPrice(selectedBooks){
+        let amount = 0;
+        this.state.totalAmount = selectedBooks.map( book => {
+            amount += book.price*book.quantity})
+        this.setState({totalAmount: amount})
+    }
+
 
     render() {
-        var Books = this.state.book.map((item, i) => {
+        var Books = this.state.books.map((item, i) => {
             return (
                 <div>
                     <Card className={"bookData"} elevation={1}>
@@ -55,8 +78,8 @@ class CartBookDetails extends Component {
                         <Typography className={"bookPrice"}>Rs. {item.price}</Typography>
                         <Typography className={"quantity"}>Available Quantity : {item.quantity}</Typography>
                         <div className={"quantityButton"}>Quantity:
-                            <input className={"quantityButton.plusMinus"} type="number" defaultValue={1} min="1"
-                                   max={item.quantity}/>
+                            <input id={item.bookId} className={"quantityButton.plusMinus"} name="quantity" type="number" defaultValue={1} min="1"
+                                   max={item.quantity} onChange={this.handleChange}/>
                             <Link className={"RemoveButton"} onClick={() => this.removeItem(i)}>
                                 <Typography>Remove</Typography>
                             </Link>
@@ -83,7 +106,7 @@ class CartBookDetails extends Component {
             }}  aria-controls="panel1a-content"
                     id="panel1a-header" onClick={() => this.getDetails()}>Proceed</Button>
             </div>
-                {this.state.displayDetails ? <CustomerDetails /> :
+                {this.state.displayDetails ? <CustomerDetails totalAmount={this.state.totalAmount}/> :
                 <div>
                     <div className={"CustomerDetails"}>
                    <div className={"HeadText"}>Customer Details</div>
