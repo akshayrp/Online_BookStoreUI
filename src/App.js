@@ -4,6 +4,7 @@ import DashBoard from "./Components/DashBoard";
 import CustomerDetails from "./Components/CustomerDetails";
 import CartBookDetails from "./Components/CartBookDetails";
 import ToolBar from "./Components/ToolBar";
+import GreetingOnConfirmPage from "./Components/GreetingOnConfirmPage";
 
 require('dotenv').config()
 
@@ -19,6 +20,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/" component={DashBoard} exact={true}/>
                         <Route path="/Cart" component={CartBookDetails} exact={true}/>
+                        <Route path="/checkout" component={GreetingOnConfirmPage} exact={true}/>
                     </Switch>
                 </div>
             </BrowserRouter>

@@ -48,7 +48,10 @@
     padding-top: 3%;
 }
 
-
+.chekoutButton {
+    float: right;
+    margin-top: -98px;
+}
 
 .emptydiv{
     padding-left: 80%;
@@ -114,6 +117,69 @@ input[type=text], select {
 .summaryText{
     margin-left: -23%;
     font-size: 150%;
-    padding-top: 10%;
+    padding-top: 3%;
     color: grey;
+}
+
+.userCard{
+    height: 135px;
+    width: 666px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.myCart{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    width: 660px;
+    margin: 20px 33px ;
+}
+
+.cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 660px;
+    margin: auto;
+    margin-top: 10px;
+
+}
+
+.mainOrderSummary{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    margin-left: -22%;
+}
+
+.cartPrice{
+    margin-left: 30%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(27, 24, 24);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 4px;
+    width: 87%;
+}
+
+.cartAuthor{
+    margin-left: 30%;
+    color: #656060;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    margin-top: 2px;
+}
+
+.cartTitle {
+    margin-left: 30%;
+    color: rgb(27, 24, 24);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2px;
+    font-weight: 500;
 }

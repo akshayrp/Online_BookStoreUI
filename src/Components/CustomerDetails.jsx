@@ -3,15 +3,23 @@ import '../CSS/CustomerDetails.css'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import DenseAppBar from "./BottomBar";
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CartBookDetails from "./CartBookDetails";
+import Cart from "./Cart";
+
 class CustomerDetails extends Component {
     constructor() {
         super();
         this.state = {
             fields: {},
             errors: {},
-            displaySummary:false
+            displaySummary:false,
+            Books:[],
+            formFilledSuccess:false
         }
         this.displaySummary= this.displaySummary.bind(this)
 
@@ -29,6 +37,12 @@ class CustomerDetails extends Component {
 
     }
 
+    displaySummary(){
+        if(this.state.formFilledSuccess) {
+            this.setState({displaySummary: true})
+        }
+        }
+
     submituserRegistrationForm(e) {
         e.preventDefault();
         if (this.validateForm()) {
@@ -39,15 +53,12 @@ class CustomerDetails extends Component {
             fields["pinCode"] = "";
             fields["address"] = "";
             fields["country"] = "";
-            this.setState({ fields: fields });
+            this.setState({ fields: fields,forFilledSuccess:true });
             alert("Form submitted");
         }
 
     }
 
-    displaySummary() {
-        this.setState({displaySummary: true})
-    }
 
     validateForm() {
         let fields = this.state.fields;
@@ -110,12 +121,17 @@ class CustomerDetails extends Component {
         });
         return formIsValid;
     }
+onClick(){
+    this.submituserRegistrationForm();
+    this.displaySummary();
+}
+
 
     render() {
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
                 <div className={"FormTitle"}>Customer Details</div>
-                <form method="post" name="userRegistrationForm" onSubmit={this.submituserRegistrationForm} >
+                <form  name="userRegistrationForm" onSubmit={this.onClick} >
                     <div className='content'>
                         <div className='name'>
                             <label>Name</label>
@@ -180,10 +196,12 @@ class CustomerDetails extends Component {
                         </div>
                     </div>
                     <div className='emptydiv'>
-                        <input type="submit" className="button" value="Continue" onClick={this.displaySummary}/>
+                        <input type="submit" className="button" value="Continue"/>
                     </div>
                 </form>
-                {this.state.displaySummary ? <p>give tag of display summary class</p> :
+                {this.state.displaySummary ?
+                        <Cart/>
+                        :
                     <div className={"DisplaySummary"}>
                         <div className={"summaryText"}>Order Summary</div>
                     </div>

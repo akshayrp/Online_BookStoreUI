@@ -35,7 +35,9 @@ class CartBookDetails extends Component {
     }
 
     getDetails() {
-        this.setState({displayDetails: true})
+        if(this.state.book.length > 0) {
+            this.setState({displayDetails: true})
+        }
     }
 
 

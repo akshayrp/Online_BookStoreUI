@@ -1,0 +1,38 @@
+.subOrder{
+    width: 50%;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25%;
+    margin-top: 1%;
+}
+
+.orderTitle{
+    width: 100%;
+    margin-left: 27%;
+    margin-top: -5%;
+    font-size: 28px;
+}
+
+.paragraph{
+    margin-left: 5%;
+    font-size: 18px;
+}
+.confirmOrderImage{
+    width: 60%;
+    margin-left: 18%;
+}
+.backToFrontPageButton{
+    margin-left: 35%;
+}
+.backToHomePageLink{
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 55%;
+    height: 9vh;
+}
+.backToHomePageLinkBorder{
+    width: 40%;
+    height: 8vh;
+}
