@@ -13,14 +13,15 @@ class Cart extends Component {
         super(props);
         this.state = {
             book: [],
+            totalAmount : 0
         }
     }
 
 
     async componentDidMount() {
         let data = JSON.parse(localStorage.getItem('bookCart'))
-        await this.setState({book: data});
-        {console.log("soieth",this.props.totalAmount)}
+        await this.setState({book: data,totalAmount : this.props.totalAmount});
+
     };
 
     handleClick = () => {
@@ -49,7 +50,6 @@ class Cart extends Component {
                                 fontFamily: 'Arial, Helvetica, sans-serif',
                                 fontWeight: '600'
                             }}>Rs. {item.price}</Typography>
-                            {this.props.totalAmount}
                         </div>
                     </div>
                 </Card>
@@ -60,6 +60,7 @@ class Cart extends Component {
                     <div className={"summaryText"}>Order Summary</div>
                 </div>
                 {Books}
+                <div>{this.state.totalAmount}</div>
                 <div className="chekoutButton">
                     <Button variant="contained" color="primary" onClick={this.handleClick}>
                         Checkout

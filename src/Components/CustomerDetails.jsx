@@ -15,7 +15,6 @@ class CustomerDetails extends Component {
             errors: {},
             displaySummary:false,
             Books:[],
-            selectValue:"India"
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,14 +22,13 @@ class CustomerDetails extends Component {
 
     };
 
+
     handleChange(e) {
         let fields = this.state.fields;
         fields[e.target.name] = e.target.value;
         this.setState({
             fields
         });
-        console.log("country",this.state.fields.country)
-        console.log("state",this.state.fields.emailid)
     }
 
 
@@ -38,14 +36,13 @@ class CustomerDetails extends Component {
         e.preventDefault();
         if (this.validateForm()) {
             let fields = {};
-            fields["name"] = "";
-            fields["emailid"] = "";
-            fields["mobileno"] = "";
-            fields["pinCode"] = "";
-            fields["address"] = "";
-            fields["country"] ="";
+            fields["name"] = e.target.fields.name;
+            fields["emailid"] =e.target.fields.emailid;
+            fields["mobileno"] = e.target.fields.mobileno;
+            fields["pinCode"] = e.target.fields.pinCode;
+            fields["address"] = e.target.fields.address;
+            fields["country"] =e.target.fields.country;
             this.setState({ fields: fields,displaySummary: true });
-            alert("Form submitted");
         }
     }
 
@@ -93,6 +90,18 @@ class CustomerDetails extends Component {
             }
         }
 
+        if (!fields["phonenumber"]) {
+            formIsValid = false;
+            errors["phonenumber"] = "*Enter your PhoneNumber.";
+        }
+
+        if (typeof fields["phonenumber"] !== "undefined") {
+            if (!fields["phonenumber"].match(/^[0-9]{10}$/)) {
+                formIsValid = false;
+                errors["phonenumber"] = "*Enter valid PhoneNumber with 10 digits.";
+            }
+        }
+
         if (!fields["address"]) {
             formIsValid = false;
             errors["address"] = "*Enter your Address.";
@@ -115,7 +124,6 @@ class CustomerDetails extends Component {
 
 
     render() {
-        var message='You selected '+this.state.selectValue;
         return (<div>
             <div className="subMain" style={{ height: '600px' }}>
                 <div className={"FormTitle"}>Customer Details</div>
@@ -177,10 +185,9 @@ class CustomerDetails extends Component {
                         </div>
                         <div className='phonenumber'>
                             <label>Country:</label>
-                            <select value={this.state.fields.country}
-                                    onChange={this.handleChange} >
-                                <option value="India">India</option>
-                                <option value="Other">Other</option>
+                            <select>
+                                <option  value={"India"} onChange={this.handleChange}>India</option>
+                                <option  value={"Other"} onChange={this.handleChange}>Other</option>
                             </select>
                         </div>
                     </div>
@@ -188,8 +195,9 @@ class CustomerDetails extends Component {
                         <input type="submit" className="button" value="Continue" />
                     </div>
                 </form>
+                {console.log(this.state.fields)}
                 {this.state.displaySummary ?
-                        <Cart totalAmount={this.props.totalAmount}/>
+                    <Cart totalAmount={this.props.totalAmount}/>
                         :
                     <div className={"DisplaySummary"}>
                         <div className={"summaryText"}>Order Summary</div>
