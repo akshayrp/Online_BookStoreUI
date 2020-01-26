@@ -21,7 +21,7 @@ class SimpleCard extends Component {
     }
 
     async componentDidMount() {
-        const url = "http://13.234.217.171:8080/TallTalesBooks/list";
+        const url = "http://13.234.217.171:8080/book/";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false});
