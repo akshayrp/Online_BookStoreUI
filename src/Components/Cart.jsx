@@ -59,7 +59,6 @@ class Cart extends Component {
                 <div className={"DisplaySummary"}>
                     <div className={"summaryText"}>Order Summary</div>
                 </div>
-                {console.log(this.state.totalAmount)}
                 {Books}
                 <div>{this.state.totalAmount}</div>
                 <div className="chekoutButton">

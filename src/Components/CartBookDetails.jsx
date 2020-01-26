@@ -18,15 +18,17 @@ class CartBookDetails extends Component {
             selectedBooks:[],
             totalAmount : 0
         }
+
         this.getDetails= this.getDetails.bind(this)
-        this.handleChange=this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this)
         this.calculateTotalPrice=this.calculateTotalPrice.bind(this);
     }
 
     componentDidMount = async () => {
       let  data = JSON.parse(localStorage.getItem('bookCart'))
-        await this.setState({books: data,selectedBooks: data})
-      this.state.selectedBooks.map(book => book.quantity = 1);
+        await this.setState({books: data})
+        await this.setState({selectedBooks: JSON.parse(JSON.stringify(data))})
+         this.state.selectedBooks.map(book => book.quantity = 1);
     };
 
 
@@ -45,12 +47,15 @@ class CartBookDetails extends Component {
     }
 
     handleChange(event){
-        this.state.selectedBooks.filter(book => {
-            if(book.bookId === event.target.id){
-                book.quantity = event.target.value;
+        this.state.selectedBooks.filter(function(item){
+            let num=Number(item.bookId);
+            if(num === event.target.id){
+                item.quantity = event.target.value;
             };
         });
-
+        this.calculateTotalPrice(this.state.selectedBooks)
+        localStorage.clear()
+        localStorage.setItem('bookCart', JSON.stringify(this.state.selectedBooks))
         this.calculateTotalPrice(this.state.selectedBooks)
     }
 
@@ -58,7 +63,7 @@ class CartBookDetails extends Component {
     calculateTotalPrice(selectedBooks){
         let amount = 0;
         this.state.totalAmount = selectedBooks.map( book => {
-            amount += book.price*book.quantity})
+            amount = amount+(book.price*book.quantity)})
         this.setState({totalAmount: amount})
     }
 
@@ -75,9 +80,9 @@ class CartBookDetails extends Component {
                         <Typography className={"bookName"}>{item.bookName}</Typography>
                         <Typography className={"authorName"}>{item.authorName}</Typography>
                         <Typography className={"bookPrice"}>Rs. {item.price}</Typography>
-                        <Typography className={"Availablequantity"}>Available Quantity : {item.quantity}</Typography>
+                        <Typography className={"quantity"}>Available Quantity : {item.quantity}</Typography>
                         <div className={"quantityButton"}>Quantity:
-                            <input id={item.bookId} className={"quantityButton.plusMinus"} name="requiredQuantity" type="number" defaultValue={1} min="1"
+                            <input id={item.bookId} className={"quantityButton.plusMinus"} name="quantity" type="number" defaultValue={1} min="1"
                                    max={item.quantity} onChange={this.handleChange}/>
                             <Link className={"RemoveButton"} onClick={() => this.removeItem(i)}>
                                 <Typography>Remove</Typography>

@@ -20,14 +20,14 @@ class CustomerDetails extends Component {
             },
             errors: {},
             displaySummary:false,
-            Books:[],
-            totalAmount:0
+            totalAmount:0,
+            OrderDetails:[]
 
         }
-
+         this.createOrderDetails = this.createOrderDetails.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateForm = this.validateForm.bind(this);
-        this.totalAmount = this.totalAmount.bind(this);
+        // this.totalAmount = this.totalAmount.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
 
     };
@@ -113,11 +113,18 @@ class CustomerDetails extends Component {
         return formIsValid;
     }
 
-    totalAmount(){
+   /* totalAmount(){
+        console.log("in totalAmount")
         if(this.state.fields.country === "India"){
-            this.state.totalAmount = this.props.totalAmount+50
+            this.setState({totalAmount : this.props.totalAmount+50})
         }
-        this.state.totalAmount = this.props.totalAmount+200
+        this.setState({totalAmount : this.props.totalAmount+200})
+    }*/
+
+    createOrderDetails(){
+        console.log("in orders")
+        this.state.OrderDetails.push(localStorage.getItem('bookCart'),JSON.stringify(this.state.fields))
+        localStorage.setItem('orderDetails',this.state.OrderDetails)
     }
 
 
@@ -192,7 +199,7 @@ class CustomerDetails extends Component {
                 </form>
                 {this.state.displaySummary ?
                     <div>
-                    {this.totalAmount}
+                        {this.createOrderDetails()}
                         <Cart totalAmount={this.state.totalAmount}/></div>
                         :
                     <div className={"DisplaySummary"}>
