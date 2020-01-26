@@ -12,11 +12,11 @@ class CustomerDetails extends Component {
         super(props);
         this.state = {
             fields: {
-                name : "",
-                emailid : "",
-                pinCode : "",
                 address : "",
-                country : "India"
+                country : "India",
+                email : "",
+                name : "",
+                pinCode : ""
             },
             errors: {},
             displaySummary:false,
@@ -67,17 +67,16 @@ class CustomerDetails extends Component {
             }
         }
 
-        if (!fields["emailid"]) {
+        if (!fields["email"]) {
             formIsValid = false;
-            errors["emailid"] = "*Please enter your email-ID.";
+            errors["email"] = "*Please enter your email-ID.";
         }
 
-        if (typeof fields["emailid"] !== "undefined") {
-            //regular expression for email validation
+        if (typeof fields["email"] !== "undefined") {
             var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if (!pattern.test(fields["emailid"])) {
+            if (!pattern.test(fields["email"])) {
                 formIsValid = false;
-                errors["emailid"] = "*Enter valid email-ID.";
+                errors["email"] = "*Enter valid email-ID.";
             }
         }
 
@@ -122,9 +121,10 @@ class CustomerDetails extends Component {
     }*/
 
     createOrderDetails(){
-        console.log("in orders")
-        this.state.OrderDetails.push(localStorage.getItem('bookCart'),JSON.stringify(this.state.fields))
-        localStorage.setItem('orderDetails',this.state.OrderDetails)
+        let book = localStorage.getItem('bookCart')
+        let consumerDto =this.state.fields
+        localStorage.setItem('bookList',book)
+        localStorage.setItem('consumerDto',JSON.stringify(consumerDto))
     }
 
 
@@ -142,10 +142,10 @@ class CustomerDetails extends Component {
                         </div>
                     </div>
                     <div className='content'>
-                        <div className='emailid'>
+                        <div className='email'>
                             <label>Email ID:</label>
-                            <input type="text" name="emailid" value={this.state.fields.emailid} onChange={this.handleChange} />
-                            <div className="errorMsg">{this.state.errors.emailid}</div>
+                            <input type="text" name="email" value={this.state.fields.email} onChange={this.handleChange} />
+                            <div className="errorMsg">{this.state.errors.email}</div>
                         </div>
                         <div className='phonenumber'>
                             <label>PinCode:</label>

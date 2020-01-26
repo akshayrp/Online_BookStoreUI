@@ -15,7 +15,6 @@ class SimpleCard extends Component {
             listOfBooks: [],
             text: "Add To Cart",
             bookCart:[],
-            clickCount:0
         }
         this.addToCart = this.addToCart.bind(this)
     }
@@ -29,8 +28,6 @@ class SimpleCard extends Component {
 
 
      addToCart(selectedItem) {
-         this.props.setCounter( this.state.clickCount+1)
-         this.setState({clickCount : this.state.clickCount+1})
          let books = this.state.bookCart;
          books.push(selectedItem)
          this.setState({bookCart: books})

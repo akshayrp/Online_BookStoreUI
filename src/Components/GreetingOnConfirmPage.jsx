@@ -25,7 +25,7 @@ class GreetingOnConfirmPage extends Component{
                 <div className='paragraph'>
 
                     <p style={{marginLeft: '27%'}}>Hurray!!!... Your order is confirmed.</p>
-                    <p style={{marginLeft: '12%'}}>Your orderId is  save the order id for further communication.</p>
+                   {/* <p style={{marginLeft: '12%'}}>Your orderId is  save the order id for further communication.</p>*/}
                 </div>
                 <Button style={{
                     backgroundColor: "rgb(51, 113, 181)",
