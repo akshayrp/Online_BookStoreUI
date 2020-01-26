@@ -11,13 +11,23 @@ class CustomerDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fields: {},
+            fields: {
+                name : "",
+                emailid : "",
+                pinCode : "",
+                address : "",
+                country : "India"
+            },
             errors: {},
             displaySummary:false,
             Books:[],
+            totalAmount:0
+
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.validateForm = this.validateForm.bind(this);
+        this.totalAmount = this.totalAmount.bind(this);
         this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
 
     };
@@ -35,14 +45,7 @@ class CustomerDetails extends Component {
     submituserRegistrationForm(e) {
         e.preventDefault();
         if (this.validateForm()) {
-            let fields = {};
-            fields["name"] = e.target.fields.name;
-            fields["emailid"] =e.target.fields.emailid;
-            fields["mobileno"] = e.target.fields.mobileno;
-            fields["pinCode"] = e.target.fields.pinCode;
-            fields["address"] = e.target.fields.address;
-            fields["country"] =e.target.fields.country;
-            this.setState({ fields: fields,displaySummary: true });
+            this.setState({ displaySummary: true });
         }
     }
 
@@ -90,17 +93,6 @@ class CustomerDetails extends Component {
             }
         }
 
-        if (!fields["phonenumber"]) {
-            formIsValid = false;
-            errors["phonenumber"] = "*Enter your PhoneNumber.";
-        }
-
-        if (typeof fields["phonenumber"] !== "undefined") {
-            if (!fields["phonenumber"].match(/^[0-9]{10}$/)) {
-                formIsValid = false;
-                errors["phonenumber"] = "*Enter valid PhoneNumber with 10 digits.";
-            }
-        }
 
         if (!fields["address"]) {
             formIsValid = false;
@@ -121,6 +113,13 @@ class CustomerDetails extends Component {
         return formIsValid;
     }
 
+    totalAmount(){
+        if(this.state.fields.country === "India"){
+            this.state.totalAmount = this.props.totalAmount+50
+        }
+        this.state.totalAmount = this.props.totalAmount+200
+    }
+
 
 
     render() {
@@ -134,13 +133,9 @@ class CustomerDetails extends Component {
                             <input type="text" name="name" value={this.state.fields.name} onChange={this.handleChange} />
                             <div className="errorMsg">{this.state.errors.name}</div>
                         </div>
-                        <div className='phonenumber'>
-                            <label>Mobile(optional)</label>
-                            <input type="text" name="phonenumber" value={this.state.fields.phonenumber} onChange={this.handleChange} />
-                        </div>
                     </div>
                     <div className='content'>
-                        <div className='name'>
+                        <div className='emailid'>
                             <label>Email ID:</label>
                             <input type="text" name="emailid" value={this.state.fields.emailid} onChange={this.handleChange} />
                             <div className="errorMsg">{this.state.errors.emailid}</div>
@@ -185,9 +180,9 @@ class CustomerDetails extends Component {
                         </div>
                         <div className='phonenumber'>
                             <label>Country:</label>
-                            <select>
-                                <option  value={"India"} onChange={this.handleChange}>India</option>
-                                <option  value={"Other"} onChange={this.handleChange}>Other</option>
+                            <select name="country" value={this.state.fields.country}  onChange={this.handleChange}>
+                                <option  value="India">India</option>
+                                <option  value="Other">Other</option>
                             </select>
                         </div>
                     </div>
@@ -195,9 +190,10 @@ class CustomerDetails extends Component {
                         <input type="submit" className="button" value="Continue" />
                     </div>
                 </form>
-                {console.log(this.state.fields)}
                 {this.state.displaySummary ?
-                    <Cart totalAmount={this.props.totalAmount}/>
+                    <div>
+                    {this.totalAmount}
+                        <Cart totalAmount={this.state.totalAmount}/></div>
                         :
                     <div className={"DisplaySummary"}>
                         <div className={"summaryText"}>Order Summary</div>

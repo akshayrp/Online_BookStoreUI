@@ -45,13 +45,12 @@ class CartBookDetails extends Component {
     }
 
     handleChange(event){
-        console.log("itemId",event.target.id)
         this.state.selectedBooks.filter(book => {
-            let num= Number(book.bookId);
-            if(num === event.target.id){
+            if(book.bookId === event.target.id){
                 book.quantity = event.target.value;
             };
         });
+
         this.calculateTotalPrice(this.state.selectedBooks)
     }
 
