@@ -112,13 +112,13 @@ class CustomerDetails extends Component {
         return formIsValid;
     }
 
-   /* totalAmount(){
+    totalAmount(){
         console.log("in totalAmount")
         if(this.state.fields.country === "India"){
             this.setState({totalAmount : this.props.totalAmount+50})
         }
         this.setState({totalAmount : this.props.totalAmount+200})
-    }*/
+    }
 
     createOrderDetails(){
         let book = localStorage.getItem('bookCart')

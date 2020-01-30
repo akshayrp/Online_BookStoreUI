@@ -20,7 +20,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/" component={DashBoard} exact={true}/>
                         <Route path="/Cart" component={CartBookDetails} exact={true}/>
-                        <Route path="/checkout" component={GreetingOnConfirmPage} exact={true}/>
+                        <Route path='/checkout:orderId' component={GreetingOnConfirmPage} exact={true}/>
                     </Switch>
                 </div>
             </BrowserRouter>

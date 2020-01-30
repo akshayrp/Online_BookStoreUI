@@ -15,7 +15,8 @@ class Cart extends Component {
         this.state = {
             book: [],
             totalAmount: 0,
-            orderId: 0
+            orderId: 0,
+            consumerDto :  localStorage.getItem('consumerDto')
         }
     }
 
@@ -28,28 +29,48 @@ class Cart extends Component {
 
     handleClick = (e) => {
         let bookList = localStorage.getItem('bookList')
-        let consumerDto = localStorage.getItem('consumerDto')
-        let consumerEmail = consumerDto.email
-        this.props.history.push("/checkout")
 
-        axios.post('http://13.234.217.171:8080/book/order', {
-            "bookList":bookList,
-            "consumerDto":consumerDto
+        axios.post('http://192.168.0.111:8080/book/order', {
+            "bookList":JSON.parse(bookList),
+            "consumerDto":JSON.parse(this.state.consumerDto)
         }, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                'Content-Type': 'application/json; charset=UTF-8'
             }
         })
             .then(response => {
                 console.log(response)
+                    this.getOrderId()
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+
+
+
+    }
+
+
+    getOrderId(){
+        let consumerDto = this.state.consumerDto
+        let stringg = JSON.stringify(this.state.consumerDto)
+        let email = stringg.email
+        console.log(email)
+        axios.post('http://192.168.0.111:8080/book/id/${email}', {
+            email
+            }, {
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
+        })
+            .then(response => {
+                console.log(response)
+                this.props.history.push(`/checkout:${response}`)
             })
             .catch(error => {
                 console.log(error.response)
             });
     }
-
-
-
 
 render()
 {
