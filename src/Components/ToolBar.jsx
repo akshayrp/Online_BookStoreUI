@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import {Link, withRouter} from "react-router-dom";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import "../App";
-
+import SearchField from "react-search-field";
 
 class ToolBar extends Component {
 
@@ -30,6 +30,12 @@ class ToolBar extends Component {
                     <Typography className={"title"} variant="h6" noWrap>
                         TallTales Books
                     </Typography>
+                  {/*  <div>
+                        <SearchField
+                            placeholder="Search"
+                            classNames="searchBar"
+                        />*/}
+
                     <Typography style={{color: "white",marginLeft: '45%'}}>
                         Cart
                     </Typography>

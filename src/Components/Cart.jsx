@@ -9,7 +9,6 @@ import axios from "axios";
 
 class Cart extends Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +17,6 @@ class Cart extends Component {
             orderId: 0
         }
     }
-
 
     async componentDidMount() {
         let data = JSON.parse(localStorage.getItem('bookCart'))
@@ -30,14 +28,13 @@ class Cart extends Component {
         let bookList = localStorage.getItem('bookList')
         let consumerDto = localStorage.getItem('consumerDto')
         let consumerEmail = consumerDto.email
-        this.props.history.push("/checkout")
 
-        axios.post('http://13.234.217.171:8080/book/order', {
-            "bookList":bookList,
-            "consumerDto":consumerDto
+        axios.post('http://192.168.0.111:8080/book/order', {
+            "bookList":JSON.parse(bookList),
+            "consumerDto":JSON.parse(consumerDto)
         }, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                'Content-Type': 'application/json; charset=UTF-8'
             }
         })
             .then(response => {
@@ -46,6 +43,7 @@ class Cart extends Component {
             .catch(error => {
                 console.log(error.response)
             });
+        this.props.history.push("/checkout")
     }
 
 
@@ -53,7 +51,6 @@ class Cart extends Component {
 
 render()
 {
-
     var Books = this.state.book.map((item, i) => {
         return (
 

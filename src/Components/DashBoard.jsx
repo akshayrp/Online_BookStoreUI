@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PrimarySearchAppBar from "./ToolBar";
 import DenseAppBar from "./BottomBar";
 import SimpleCard from "./listOfBooks";
-
+import UserLogin from "./UserLogin";
 
 export default class DashBoard extends  Component{
 
@@ -22,7 +22,8 @@ export default class DashBoard extends  Component{
         return (
             <div>
                 <PrimarySearchAppBar clickCounter={this.state.clickCounter}/>
-                <SimpleCard setCounter={this.setCounter}/>
+                {/*<SimpleCard setCounter={this.setCounter}/>*/}
+                <UserLogin/>
                <DenseAppBar/>
             </div>
         )

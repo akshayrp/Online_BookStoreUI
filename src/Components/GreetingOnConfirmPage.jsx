@@ -5,8 +5,6 @@ import { withRouter} from "react-router-dom";
 import "../CSS/GreetingOnConfirmPage.css"
 import Button from "@material-ui/core/Button";
 
-
-
 class GreetingOnConfirmPage extends Component{
     constructor(props) {
         super(props);
@@ -25,7 +23,7 @@ class GreetingOnConfirmPage extends Component{
                 <div className='paragraph'>
 
                     <p style={{marginLeft: '27%'}}>Hurray!!!... Your order is confirmed.</p>
-                   {/* <p style={{marginLeft: '12%'}}>Your orderId is  save the order id for further communication.</p>*/}
+                   {}
                 </div>
                 <Button style={{
                     backgroundColor: "rgb(51, 113, 181)",

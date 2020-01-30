@@ -5,22 +5,29 @@ import "../CSS/listOfBooks.css"
 import Button from "@material-ui/core/Button";
 import {withRouter} from 'react-router-dom';
 import "../App";
+import {Redirect} from  'react-router-dom'
 
 class SimpleCard extends Component {
 
     constructor(props) {
         super(props);
+        const token = localStorage.getItem("token")
+        let loggedIn = true;
+        if (token == null) {
+            loggedIn = false;
+        }
         this.state = {
             loading: true,
             listOfBooks: [],
             text: "Add To Cart",
             bookCart:[],
+            loggedIn
         }
         this.addToCart = this.addToCart.bind(this)
     }
 
     async componentDidMount() {
-        const url = "http://13.234.217.171:8080/book/";
+        const url = "http://192.168.0.111:8080/book/";
         const response = await fetch(url);
         const data = await response.json();
         this.setState({listOfBooks: data, loading: false});
@@ -36,6 +43,8 @@ class SimpleCard extends Component {
 
 
     render() {
+        if (this.state.loggedIn === false)
+            return <Redirect to="/"/>
         console.log(this.state.listOfBooks)
         const { text } = this.state
         if (this.state.loading) {
